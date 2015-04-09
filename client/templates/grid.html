@@ -1,0 +1,11 @@
+<template name="grid">
+<div class="template grid">
+<div class="gridster">
+		<ul>
+			{{#each widgets}}
+				<li data-row="{{row}}" data-col="{{col}}" data-sizex="{{sizex}}" data-sizey="{{sizey}}" data-widget_id="{{._id}}"></li>
+			{{/each}}
+		</ul>
+	</div>
+	</div>
+</template>
