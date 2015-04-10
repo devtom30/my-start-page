@@ -1,11 +1,11 @@
 <template name="grid">
 <div class="template grid">
-<div class="gridster">
-		<ul>
+		<ul id="dashboard">
+		{{#if widgetsReady}}
 			{{#each widgets}}
-				<li data-row="{{row}}" data-col="{{col}}" data-sizex="{{sizex}}" data-sizey="{{sizey}}" data-widget_id="{{._id}}"></li>
+				<li class="row-{{row}} col-{{col}} width-{{width}} height-{{height}}"></li>
 			{{/each}}
+		{{/if}}
 		</ul>
-	</div>
 	</div>
 </template>

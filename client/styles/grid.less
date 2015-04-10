@@ -1,0 +1,37 @@
+@total_width:1050px;
+@margins:5px;
+@size:140px;
+
+@max_cols:7;
+@max_rows:30;
+
+.generate-columns(@max_cols);
+.generate-columns(@n, @i: 1) when (@i =< @n) {
+  .col-@{i} {
+    left:(@size)*(@i - 1) + (@margins*(2*@i - 1));
+  }
+  .generate-columns(@n, (@i + 1));
+}
+
+.generate-rows(@max_rows);
+.generate-rows(@n, @i: 1) when (@i =< @n) {
+  .row-@{i} {
+    top:@size*(@i - 1) + (@margins*(2*@i - 1));
+  }
+  .generate-rows(@n, (@i + 1));
+}
+
+.generate-width(@max_cols);
+.generate-width(@n, @i: 1) when (@i =< @n) {
+  .width-@{i} {
+    width:@size*@i;
+  }
+  .generate-width(@n, (@i + 1));
+}
+.generate-height(@max_rows);
+.generate-height(@n, @i: 1) when (@i =< @n) {
+  .height-@{i} {
+    height:@size*@i;
+  }
+  .generate-height(@n, (@i + 1));
+}
