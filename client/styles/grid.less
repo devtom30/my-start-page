@@ -24,14 +24,14 @@
 .generate-width(@max_cols);
 .generate-width(@n, @i: 1) when (@i =< @n) {
   .width-@{i} {
-    width:@size*@i;
+    width:@size*@i + @margins*2*((@i - 1));
   }
   .generate-width(@n, (@i + 1));
 }
 .generate-height(@max_rows);
 .generate-height(@n, @i: 1) when (@i =< @n) {
   .height-@{i} {
-    height:@size*@i;
+    height:@size*@i + @margins*2*((@i - 1));
   }
   .generate-height(@n, (@i + 1));
 }
