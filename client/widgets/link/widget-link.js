@@ -1,11 +1,8 @@
 Widgets.register('link', {
-	settings : [
-	    href:{type:'text',length:25}
-	],
+	settings : {},
 	data:{
 		href:"#"
 	},
 	widgetTemplate:'widgetLink'
 });
 
-//Template.widgetTemplate.events

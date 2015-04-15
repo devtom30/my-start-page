@@ -11,7 +11,7 @@
     </div>
     <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Link</a></li>
+            <li class="{{#if in_modification_state}}active{{/if}}"><a href="#" id="modification_toggle">Link</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             {{> loginButtons}} 

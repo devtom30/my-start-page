@@ -1,13 +1,4 @@
 Template.grid.rendered = function() {
-	console.log('grid-rendered');
-//	$(".gridster ul").gridster({
-//		widget_margins : [ 5, 5 ],
-//		widget_base_dimensions : [ 140, 140 ],
-//		resize : {
-//			enabled : true
-//		},
-//		max_cols: 7
-//	});
 };
 
 Template.grid.helpers({
@@ -16,5 +7,11 @@ Template.grid.helpers({
 	},
 	widgetsReady:function(){
 		return current_dashboard.ready() && current_widgets.ready();
+	}
+});
+
+Template.grid.events({
+	'click .configure-btn':function(){
+		
 	}
 });

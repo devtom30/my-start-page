@@ -1,5 +1,6 @@
 Meteor.startup(function() {
 	Dashboards.remove({});
+	Widgets_Collection.remove({});
 	if (Dashboards.find().count() === 0) {
 		
 		var dashboardID = Dashboards.insert({
