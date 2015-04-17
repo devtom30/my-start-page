@@ -12,24 +12,52 @@ Template.appBody.events({
 					handle:'.dragHandle',
 					grid:[gridSize,gridSize],
 					drag:function(event,ui){
+						if(ui.position.left===ui.helper.position().left && ui.position.top===ui.helper.position().top){
+							return true;
+						}
+						
 						ui.position.top = Math.max( 5, ui.position.top );
+						ui.position.left = Math.max( 5, Math.min(ui.helper.parent().width()-(ui.helper.parent().width()%gridSize)-gridSize+5-ui.helper.outerWidth()+140,ui.position.left));
 						
-						ui.position.left = Math.max( 5, Math.min(ui.helper.parent().width()-(ui.helper.parent().width()%gridSize)-gridSize+5,ui.position.left));
 						
-						if(this.invalidPositions[ui.position.top+'.'+ui.position.left]){
+						if(this.invalidPositions[ui.position.top] && this.invalidPositions[ui.position.top][ui.position.left]){
 							ui.position = ui.helper.position();
 						}
 					},
 					start:function(event,ui){
 						var invalidPositions = {};
 						ui.helper.siblings().each(function(k,elem){
-							var pos = $(elem).position();
-							invalidPositions[$(elem).position().top+'.'+$(elem).position().left] = true;
-							for(var i=($(elem).outerWidth()-140)/150;i>0;i--){
-								invalidPositions[$(elem).position().top+'.'+($(elem).position().left+(150*(i)))] = true;
+							var $elem = $(elem);
+							var pos = $elem.position();
+							for(var i=$elem.outerWidth()-140;i>=0;i=i-gridSize){
+								for(var u=$elem.outerHeight()-140;u>=0;u=u-gridSize){
+									if(!invalidPositions[$elem.position().top+u]){
+										invalidPositions[$elem.position().top+u]={};
+									}
+									invalidPositions[$elem.position().top+u][$(elem).position().left+i] = true;
+								}
 							}
 						});
-						this.invalidPositions = invalidPositions;
+						var invalidPositions2={};
+						for(var i=ui.helper.outerWidth()-140;i>=0;i=i-gridSize){
+							for(var u=ui.helper.outerHeight()-140;u>=0;u=u-gridSize){
+								$.each(invalidPositions,function(posTop,arr){
+									$.each(arr,function(left,arr2){
+										if(!invalidPositions2[posTop-u]){
+											invalidPositions2[posTop-u]={};
+										}
+										invalidPositions2[posTop-u][left-i]=true;
+									});
+								});
+							}
+						}
+						this.invalidPositions = _.deepExtend(invalidPositions,invalidPositions2);
+					},
+					stop:function(event,ui){
+						var change = {};
+						change.row = ((ui.position.top-5)/150)+1;
+						change.col	= ((ui.position.left-5)/150)+1;
+						Blaze.getData(this).modify(change);
 					},
 					stack:('#dashboard li')
 				});
