@@ -1,3 +1,6 @@
+CURRENT_CONFIGURED_WIDGET = 'current_configured_widget';
+Session.setDefault(CURRENT_CONFIGURED_WIDGET, false);
+
 Template.grid.rendered = function() {
 };
 
@@ -12,6 +15,7 @@ Template.grid.helpers({
 
 Template.grid.events({
 	'click .configure-btn':function(){
-		
+		Session.set('current_configured_widget',this._id);
+		$('#widgetConfigModal').modal('show');
 	}
 });

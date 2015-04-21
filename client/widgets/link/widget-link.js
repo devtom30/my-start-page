@@ -1,5 +1,11 @@
 Widgets.register('link', {
-	settings : {},
+	settings : {
+		href: {
+		    type: String,
+		    label: "Website URL",
+		    max: 400
+		  }
+		},
 	data:{
 		href:"#"
 	},
