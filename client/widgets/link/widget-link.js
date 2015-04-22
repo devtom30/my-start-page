@@ -4,10 +4,21 @@ Widgets.register('link', {
 		    type: String,
 		    label: "Website URL",
 		    max: 400
-		  }
+		  },
+		bgColor:{
+			type:String,
+			label: "Background Color",
+			autoform: {
+		    	type: "bootstrap-colorpicker",
+		    	colorPickerOptions:{
+		    		color:"rgba"
+		    	}
+		    }
+		}
 		},
 	data:{
-		href:"#"
+		href:"#",
+		bgColor:"",
 	},
 	widgetTemplate:'widgetLink'
 });

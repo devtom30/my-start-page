@@ -3,6 +3,7 @@ AutoForm.hooks({
 		onSubmit : function(insertDoc, updateDoc, currentDoc) {
 			Widgets_Collection.findOne(this.docId).modify(insertDoc);
 			this.done();
+			return false;
 		}
 	}
 });
