@@ -14,6 +14,13 @@ Meteor.startup(function() {
 			width : 1,
 			height : 1,
 			type : "link"
+		},
+		{
+			row : 2,
+			col : 1,
+			width : 1,
+			height : 1,
+			type : "link"
 		}
 //		, {
 //			row : 2,

@@ -61,6 +61,23 @@ Template.appBody.events({
 					},
 					stack:('#dashboard li')
 				});
+				$('#dashboard li').resizable({
+					helper: "ui-resizable-helper",
+					grid:[gridSize,gridSize],
+					start:function(event,ui){
+					},
+					resize : function(event, ui) {
+
+					},
+					stop : function(event, ui) {
+						var change = {};
+						change.height = Math.round((ui.size.height+10)/gridSize);
+						change.width = Math.round((ui.size.width+10)/gridSize);
+						Blaze.getData(this).modify(change);
+						ui.size.width = 140+(Math.round((ui.size.width+10)/gridSize)-1)*150;
+						ui.size.height = 140+(Math.round((ui.size.height+10)/gridSize)-1)*150;
+					}
+				});
 			}else{
 				//stop dragging;
 				$('#dashboard li').draggable('disable');

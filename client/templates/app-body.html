@@ -11,7 +11,11 @@
     </div>
     <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-            <li class="{{#if in_modification_state}}active{{/if}}"><a href="#" id="modification_toggle">Link</a></li>
+            <li class="{{#if in_modification_state}}active{{/if}}"><a href="#" id="modification_toggle">Configure</a></li>
+            {{#if in_modification_state}}
+	            <li><a href="#" id="add_widget">Add widget</a></li>
+	            <li><a href="#" id="change_background">Change background</a></li>
+        	{{/if}}
         </ul>
         <ul class="nav navbar-nav navbar-right">
             {{> loginButtons}} 

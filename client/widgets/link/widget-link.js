@@ -1,4 +1,8 @@
 Widgets.register('link', {
+	info:{
+		name:'Link to a website',
+		description:'This widget allows you to create a simple button to reach your favorite website.'
+	},
 	settings : {
 		href: {
 		    type: String,
@@ -11,7 +15,7 @@ Widgets.register('link', {
 			autoform: {
 		    	type: "bootstrap-colorpicker",
 		    	colorPickerOptions:{
-		    		color:"rgba"
+		    		format:"rgba"
 		    	}
 		    }
 		}
@@ -23,3 +27,12 @@ Widgets.register('link', {
 	widgetTemplate:'widgetLink'
 });
 
+Template.widgetLink.helpers({
+	'attributes':function(){
+		var attributes = {};
+		if(this.data.bgColor!=''){
+			attributes.style='background-color:'+this.data.bgColor+';';
+		}
+		return attributes;
+	}
+});

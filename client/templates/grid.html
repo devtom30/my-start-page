@@ -8,7 +8,7 @@
 					<a href="#" class="configure-btn">Configure</a>
 					<div class="dragHandle"></div>
 				{{/if}}
-				<div class="widget {{type}}">
+				<div class="widget {{type}} {{data.classes}}">
 						{{> Template.dynamic template=widgetTemplate data=this }}
 				</div>
 				</li>

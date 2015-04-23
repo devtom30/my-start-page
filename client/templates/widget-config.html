@@ -1,7 +1,22 @@
 <Template name="widgetConfig">
-<div id="#widgetConfigModal">
-	{{#if currentSchema}}
-	{{> quickForm schema=currentSchema id="widgetConfiguration" doc=currentDocument}}
-	{{/if}}
+<div class="modal fade" id="widgetConfigModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+    	{{#if currentSchema}}
+		{{> quickForm schema=currentSchema id="widgetConfiguration" doc=currentDocument}}
+		{{/if}}
+      </div>
+<!--       <div class="modal-footer"> -->
+<!--         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+<!--         <button type="button" class="btn btn-primary">Save changes</button> -->
+<!--       </div> -->
+    </div>
+  </div>
 </div>
+
 </Template>

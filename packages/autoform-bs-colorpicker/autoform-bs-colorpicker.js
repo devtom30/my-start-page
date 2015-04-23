@@ -41,6 +41,7 @@ Template.afBootstrapColorpicker.helpers({
     var atts = _.clone(this.atts);
     // Add bootstrap class
     atts = AutoForm.Utility.addClass(atts, "form-control");
+    atts.value = this.value;
     delete atts.colorPickerOptions;
     return atts;
   }
@@ -49,22 +50,22 @@ Template.afBootstrapColorpicker.helpers({
 Template.afBootstrapColorpicker.rendered = function () {
   var $input = this.data.atts.buttonClasses ? this.$('.input-group.color') : this.$('input');
   var data = this.data;
-
+  data.atts.value = data.value;
   // instanciate datepicker
-  $input.colorpicker(data.atts.colorPickerOptions);
+  data.atts.colorPickerOptions.color = data.value;
+  $input.parent('.input-group').colorpicker(data.atts.colorPickerOptions);
 
   // set and reactively update values
-  this.autorun(function () {
-    var data = Template.currentData();
-
-    // set field value
-    $input.colorpicker('setValue', data.value);
-    
-    
-  });
+//  this.autorun(function () {
+//    var data = Template.currentData();
+//    // set field value
+//    $input.parent('.input-group').colorpicker('update', data.value);
+//  });
 };
 
-Template.afBootstrapColorpicker.destroyed = function () {
-  var $input = this.data.atts.buttonClasses ? this.$('.input-group.color') : this.$('input');
-  $input.colorpicker('destroy');
-};
+//Template.afBootstrapColorpicker.destroyed = function () {
+//  var $input = this.data.atts.buttonClasses ? this.$('.input-group.color') : this.$('input');
+//  
+//  $input.parent('.input-group').colorpicker('destroy');
+//  
+//};
