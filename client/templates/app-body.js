@@ -26,6 +26,7 @@ Template.appBody.events({
 					},
 					start:function(event,ui){
 						var invalidPositions = {};
+						//Calculate all positions taken by the other blocks.
 						ui.helper.siblings().each(function(k,elem){
 							var $elem = $(elem);
 							var pos = $elem.position();
@@ -39,6 +40,8 @@ Template.appBody.events({
 							}
 						});
 						var invalidPositions2={};
+						//Using the positions of other block,
+						//Calculate the invalid positions according to current block's size.
 						for(var i=ui.helper.outerWidth()-140;i>=0;i=i-gridSize){
 							for(var u=ui.helper.outerHeight()-140;u>=0;u=u-gridSize){
 								$.each(invalidPositions,function(posTop,arr){
@@ -65,17 +68,60 @@ Template.appBody.events({
 					helper: "ui-resizable-helper",
 					grid:[gridSize,gridSize],
 					start:function(event,ui){
+						var max_height_at_width={};
+						//Get max width possible.
+						var max_width = 30*gridSize-10;
+						ui.element.siblings().each(function(k,elem){
+							var $elem = $(elem);
+							var width = $elem.position().left-ui.element.position().left-10;
+							if(_.overlap([$elem.position().top,$elem.position().top+$elem.outerHeight()],ui.element.position().top)
+									&& max_width>width && width>0){
+								max_width=width;
+							}
+						});
+						for(var i=max_width;i>=0;i=i-gridSize){
+							max_height_at_width[i]=null;
+							ui.element.siblings().each(function(k,elem){
+								var $elem = $(elem);
+								if(!_.overlap([$elem.position().left,$elem.position().left+$elem.outerWidth()],[ui.element.position().left,ui.element.position().left+i])){
+									//The element is out of collision possibility.
+									return true;
+								}else{
+									if(max_height_at_width[i]===null || max_height_at_width[i]>ui.element.position().top-$elem.position().top-5){
+										max_height_at_width[i]=$elem.position().top-ui.element.position().top-5;
+									}
+								}
+							});
+						}
+						this.max_height_at_width=max_height_at_width;
+						//Calculate all max height possible for each possible widths.
+						
+						this.last_width = 140+(Math.round((ui.size.width+10)/gridSize)-1)*150;
+						this.last_height = ui.size.height = 140+(Math.round((ui.size.height+10)/gridSize)-1)*150;
 					},
 					resize : function(event, ui) {
-
+						ui.size.width = 140+(Math.round((ui.size.width+10)/gridSize)-1)*150;
+						ui.size.height = 140+(Math.round((ui.size.height+10)/gridSize)-1)*150;
+						
+						
+						
+						if(typeof this.max_height_at_width[ui.size.width] =='undefined' ||(this.max_height_at_width[ui.size.width]<ui.size.height && this.max_height_at_width[ui.size.width]!==null)){
+							ui.size.width = this.last_width;
+							ui.size.height = this.last_height;
+						}else{
+							this.last_width = ui.size.width;
+							this.last_height = ui.size.height;
+						}
 					},
 					stop : function(event, ui) {
 						var change = {};
+						ui.size.width = 140+(Math.round((ui.size.width+10)/gridSize)-1)*150;
+						ui.size.height = 140+(Math.round((ui.size.height+10)/gridSize)-1)*150;
+						ui.element.width(ui.size.width);
+						ui.element.height(ui.size.height);
 						change.height = Math.round((ui.size.height+10)/gridSize);
 						change.width = Math.round((ui.size.width+10)/gridSize);
 						Blaze.getData(this).modify(change);
-						ui.size.width = 140+(Math.round((ui.size.width+10)/gridSize)-1)*150;
-						ui.size.height = 140+(Math.round((ui.size.height+10)/gridSize)-1)*150;
 					}
 				});
 			}else{
