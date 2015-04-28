@@ -18,11 +18,21 @@ Widgets.register('link', {
 		    		format:"rgba"
 		    	}
 		    }
+		},
+		icon:{
+			type:String,
+			label: "Icon",
+			autoform: {
+		    	type: "bootstrap-iconpicker",
+		    	iconPickerOptions:{
+		    	}
+		    }
 		}
 		},
 	data:{
 		href:"#",
 		bgColor:"",
+		icon:"fa-bookmark",
 	},
 	widgetTemplate:'widgetLink'
 });

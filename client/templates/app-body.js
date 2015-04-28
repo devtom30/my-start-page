@@ -102,9 +102,6 @@ Template.appBody.events({
 					resize : function(event, ui) {
 						ui.size.width = 140+(Math.round((ui.size.width+10)/gridSize)-1)*150;
 						ui.size.height = 140+(Math.round((ui.size.height+10)/gridSize)-1)*150;
-						
-						
-						
 						if(typeof this.max_height_at_width[ui.size.width] =='undefined' ||(this.max_height_at_width[ui.size.width]<ui.size.height && this.max_height_at_width[ui.size.width]!==null)){
 							ui.size.width = this.last_width;
 							ui.size.height = this.last_height;
