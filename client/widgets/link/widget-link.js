@@ -27,12 +27,23 @@ Widgets.register('link', {
 		    	iconPickerOptions:{
 		    	}
 		    }
+		},
+		background:{
+			type:String,
+			label: "Background Image",
+			autoform: {
+				afFieldInput:{
+		    	type: "fileUpload",
+		    	collection:'Images'
+				}
+		    }
 		}
 		},
 	data:{
 		href:"#",
 		bgColor:"",
 		icon:"fa-bookmark",
+		background:"",
 	},
 	widgetTemplate:'widgetLink'
 });
@@ -42,6 +53,9 @@ Template.widgetLink.helpers({
 		var attributes = {};
 		if(this.data.bgColor!=''){
 			attributes.style='background-color:'+this.data.bgColor+';';
+		}
+		if(this.data.background!=''){
+			attributes.style='background-image:url("'+Images.findOne(this.data.background).url()+'");';
 		}
 		return attributes;
 	}

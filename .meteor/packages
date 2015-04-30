@@ -16,3 +16,7 @@ ian:accounts-ui-bootstrap-3
 aldeed:autoform
 salketer:autoform-bs-colorpicker
 salketer:autoform-bs-iconpicker
+cfs:standard-packages
+cfs:gridfs
+yogiben:autoform-file
+fortawesome:fontawesome

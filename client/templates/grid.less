@@ -1,3 +1,4 @@
+@import "../lib/bootstrap/custom.bootstrap.import.less";
 .template.grid {
 	#dashboard{
 		list-style: none;
@@ -5,6 +6,7 @@
 		position:relative;
 		li{
 			position:absolute;
+			overflow:hidden;
 			.widget{
 				background:#f8f8f8;
 	  			border: 1px solid #e7e7e7;
@@ -21,6 +23,23 @@
   			.configure-btn{
   				position:absolute;
   				z-index:10;
+  				background-color: @btn-primary-bg;
+				display: block;
+				width: 100px;
+				height: 100px;
+				top: -60px;
+				left: -60px;
+				-webkit-transform: rotate(45deg);
+				-moz-transform: rotate(45deg);
+				-o-transform: rotate(45deg);
+				transform: rotate(45deg);
+				vertical-align: middle;
+				text-align: right;
+				line-height: 100px;
+				padding-right: 6px;
+				font-size:20px;
+				color:@btn-primary-color;
+				border:1px solid @btn-primary-border;
   			}
 		}
 	}
