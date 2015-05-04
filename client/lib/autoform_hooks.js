@@ -6,5 +6,13 @@ AutoForm.hooks({
 			$('#widgetConfigModal').modal('hide');
 			return false;
 		}
+	},
+	backgroundConfiguration : {
+		onSubmit : function(insertDoc, updateDoc, currentDoc) {
+			Dashboards.update(this.docId,updateDoc);
+			this.done();
+			$('#backgroundConfigModal').modal('hide');
+			return false;
+		}
 	}
 });

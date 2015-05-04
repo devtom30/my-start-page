@@ -1,4 +1,4 @@
-Meteor.publish("dashboard", function () {
+Meteor.publish("dashboards", function () {
   return Dashboards.find({$or:[{ownerid: this.userId},{ownerid: null}]});
 });
 

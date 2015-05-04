@@ -9,7 +9,7 @@ Template.grid.helpers({
 		return Widgets_Collection.find({});
 	},
 	widgetsReady:function(){
-		return current_dashboard.ready() && current_widgets.ready();
+		return dashboards.ready() && current_widgets.ready();
 	}
 });
 

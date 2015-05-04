@@ -31,6 +31,7 @@ Widgets.register('link', {
 		background:{
 			type:String,
 			label: "Background Image",
+			optional: true,
 			autoform: {
 				afFieldInput:{
 		    	type: "fileUpload",

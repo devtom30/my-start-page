@@ -87,11 +87,12 @@ Template.afBootstrapIconpicker.rendered = function () {
 //    unselectedClass: ''
 //});
   // set and reactively update values
-//  this.autorun(function () {
-//    var data = Template.currentData();
-//    // set field value
-//    $input.parent('.input-group').colorpicker('update', data.value);
-//  });
+  this.autorun(function () {
+    var data = Template.currentData();
+    console.log(data.value);
+    // set field value
+    $input.iconpicker('setIcon', data.value);
+  });
 };
 
 //Template.afBootstrapColorpicker.destroyed = function () {
