@@ -89,7 +89,6 @@ Template.afBootstrapIconpicker.rendered = function () {
   // set and reactively update values
   this.autorun(function () {
     var data = Template.currentData();
-    console.log(data.value);
     // set field value
     $input.iconpicker('setIcon', data.value);
   });

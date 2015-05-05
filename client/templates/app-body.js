@@ -272,6 +272,9 @@ Template.appBody
 			},
 			'click #change_background':function(){
 				$('#backgroundConfigModal').modal('show');
+			},
+			'click #add_widget':function(){
+				$('#widgetAddModal').modal('show');
 			}
 		});
 
