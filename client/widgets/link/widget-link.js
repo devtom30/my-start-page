@@ -6,45 +6,45 @@ Widgets.register('link', {
 	settings : {
 		href: {
 		    type: String,
-		    label: "Website URL",
+		    label: 'Website URL',
 		    max: 400
 		  },
 		bgColor:{
 			type:String,
-			label: "Background Color",
+			label: 'Background Color',
 			autoform: {
-		    	type: "bootstrap-colorpicker",
+		    	type: 'bootstrap-colorpicker',
 		    	colorPickerOptions:{
-		    		format:"rgba"
+		    		format:'rgba'
 		    	}
 		    }
 		},
 		icon:{
 			type:String,
-			label: "Icon",
+			label: 'Icon',
 			autoform: {
-		    	type: "bootstrap-iconpicker",
+		    	type: 'bootstrap-iconpicker',
 		    	iconPickerOptions:{
 		    	}
 		    }
 		},
 		background:{
 			type:String,
-			label: "Background Image",
+			label: 'Background Image',
 			optional: true,
 			autoform: {
 				afFieldInput:{
-		    	type: "fileUpload",
+		    	type: 'fileUpload',
 		    	collection:'Images'
 				}
 		    }
 		}
 		},
 	data:{
-		href:"#",
-		bgColor:"",
-		icon:"fa-bookmark",
-		background:"",
+		href:'#',
+		bgColor:'',
+		icon:'fa-bookmark',
+		background:'',
 	},
 	widgetTemplate:'widgetLink'
 });

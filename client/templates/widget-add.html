@@ -1,4 +1,4 @@
-<Template name="widgetAdd">
+<template name="widgetAdd">
 <div class="modal fade" id="widgetAddModal" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -30,22 +30,22 @@
 	</div>
 </div>
 
-</Template>
+</template>
 
-<Template name="widgetItem">
+<template name="widgetItem">
 <div class="panel panel-default">
   <div class="panel-heading" role="tab" id="headingOne">
     <h4 class="panel-title clearfix">
-      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <a data-toggle="collapse" data-parent="#accordion" href="#details_{{widget.name}}" aria-expanded="false" aria-controls="details_{{widget.name}}">
         {{widget.info.name}}
       </a>
-      <button type="button" class="btn btn-primary pull-right btn-xs">Add</button>
+      <button type="button" class="btn btn-primary pull-right btn-xs addBtn">Add</button>
     </h4>
   </div>
-  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+  <div id="details_{{widget.name}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
     <div class="panel-body">
       {{widget.info.description}}
     </div>
   </div>
 </div>
-</Template>
+</template>

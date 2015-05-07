@@ -1,33 +1,37 @@
-<Template name="appBody">
-	<div class="navbar navbar-default" role="navigation">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#">Project name</a>
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
+<template name="appBody">
+    <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Project name</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="{{#if in_modification_state}}active{{/if}}">
+                    <a href="#" id="modification_toggle"
+                       title="Configure"><i class="fa fa-gears"></i></a>
+                </li>
+				{{#if in_modification_state}}
+                    <li><a href="#" id="add_widget" title="Add widget"><i class="fa fa-plus"></i></a></li>
+                    <li><a href="#" id="change_background" title="Change background"><i class="fa fa-photo"></i></a>
+                    </li>
+				{{/if}}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+				{{> loginButtons}}
+            </ul>
+        </div>
     </div>
-    <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-            <li class="{{#if in_modification_state}}active{{/if}}"><a href="#" id="modification_toggle" title="Configure"><i class="fa fa-gears"></i></a></li>
-            {{#if in_modification_state}}
-	            <li><a href="#" id="add_widget" title="Add widget"><i class="fa fa-plus"></i></a></li>
-	            <li><a href="#" id="change_background" title="Change background"><i class="fa fa-photo"></i></a></li>
-        	{{/if}}
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            {{> loginButtons}} 
-        </ul>
-    </div>
-	</div>
-<!-- 	<div class="container"> -->
-<!-- 	<div class="row"><div class="col-xs-12"> -->
+    <!-- 	<div class="container"> -->
+    <!-- 	<div class="row"><div class="col-xs-12"> -->
 	{{> grid}}
-<!-- 	</div></div> -->
-<!-- 	</div> -->
+    <!-- 	</div></div> -->
+    <!-- 	</div> -->
 	{{> widgetConfig}}
 	{{> widgetAdd}}
 	{{> backgroundConfig}}
-</Template>
+</template>
