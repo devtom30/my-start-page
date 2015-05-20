@@ -8,15 +8,18 @@ Template.widgetAdd.rendered = function () {
 };
 var test_collision = function (widget) {
     var collisionDetected = false;
+    if(widget.col==11 && widget.row==5){
+        alert('test');
+    }
     Widgets_Collection.find({
         dashboard_id: widget.dashboard_id
-    }).forEach(function () {
-        if (_.overlap([widget.col, widget.col + widget.width], [this.col, this.col + this.width]) || _.overlap([widget.row, widget.row + widget.height], [this.row, this.row + this.height])) {
+    }).forEach(function (target) {
+        if (_.overlap([widget.col, widget.col + widget.width-1], [target.col, target.col + target.width-1]) && _.overlap([widget.row, widget.row + widget.height-1], [target.row, target.row + target.height-1])) {
             collisionDetected = true;
         }
     });
     return collisionDetected;
-}
+};
 Template.widgetAdd.events({
     'click .addBtn': function () {
         var newWidget = {
@@ -30,7 +33,7 @@ Template.widgetAdd.events({
         var noValidPosition = false;
         while (test_collision(newWidget) && !noValidPosition) {
             newWidget.col++;
-            if (newWidget.col > 30 - newWidget.width) {
+            if (newWidget.col > 12 - newWidget.width+1) {
                 newWidget.col = 1;
                 newWidget.row++;
             }

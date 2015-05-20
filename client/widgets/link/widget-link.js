@@ -28,6 +28,16 @@ Widgets.register('link', {
 		    	}
 		    }
 		},
+        iconColor:{
+            type:String,
+            label: 'Icon Color',
+            autoform: {
+                type: 'bootstrap-colorpicker',
+                colorPickerOptions:{
+                    format:'rgba'
+                }
+            }
+        },
 		background:{
 			type:String,
 			label: 'Background Image',
@@ -44,7 +54,7 @@ Widgets.register('link', {
 		href:'#',
 		bgColor:'',
 		icon:'fa-bookmark',
-		background:'',
+		background:''
 	},
 	widgetTemplate:'widgetLink'
 });
@@ -52,12 +62,16 @@ Widgets.register('link', {
 Template.widgetLink.helpers({
 	'attributes':function(){
 		var attributes = {};
-		if(this.data.bgColor!=''){
-			attributes.style='background-color:'+this.data.bgColor+';';
+        attributes.style = '';
+		if(this.data.bgColor!==''){
+			attributes.style+='background-color:'+this.data.bgColor+';';
 		}
-		if(this.data.background!=''){
-			attributes.style='background-image:url("'+Images.findOne(this.data.background).url()+'");';
+		if(this.data.background!==''){
+			attributes.style+='background-image:url("'+Images.findOne(this.data.background).url()+'");';
 		}
+        if(this.data.iconColor!==''){
+            attributes.style+='color:'+this.data.iconColor+';';
+        }
 		return attributes;
 	}
 });
