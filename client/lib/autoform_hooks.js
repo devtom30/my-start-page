@@ -16,3 +16,5 @@ AutoForm.hooks({
 		}
 	}
 });
+//AutoForm.setDefaultTemplate('bootstrap3');
+//AutoForm.setDefaultTemplateForType('afObjectField', 'plain-object');

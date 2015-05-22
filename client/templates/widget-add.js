@@ -3,6 +3,17 @@ Template.widgetAdd.helpers({
         return Widgets.collection;
     }
 });
+
+Template.widgetItem.helpers({
+    disabled:function(widget){
+        if(widget.limit>0){
+            return  Widgets_Collection.find({dashboard_id:Session.get(CURRENT_DASHBOARD),type:widget.name}).count()>=widget.limit?'disabled':'';
+        }else{
+            return '';
+        }
+    }
+})
+
 Template.widgetAdd.rendered = function () {
     $('#widgetAddModal').modal({show: false});
 };

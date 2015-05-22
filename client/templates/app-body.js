@@ -8,13 +8,15 @@ Template.appBody.helpers({
         return Dashboards.findOne(Session.get(CURRENT_DASHBOARD));
     }
 });
+
 Template.appBody.events({
     'click #modification_toggle': function () {
+        var $dashboard = $('#dashboard li');
         Session.set(IN_MODIFICATION_STATE, !Session.get(IN_MODIFICATION_STATE));
         if (Session.get(IN_MODIFICATION_STATE)) {
             //start dragging;
             var gridSize = 150;//140+2*5margin
-            $('#dashboard li').draggable({
+            $dashboard.draggable({
                 handle: '.dragHandle',
                 grid: [gridSize, gridSize],
                 drag: function (event, ui) {
@@ -126,7 +128,8 @@ Template.appBody.events({
             });
         } else {
             //stop dragging;
-            $('#dashboard li').draggable('disable');
+            $dashboard.draggable('disable');
+            $dashboard.resizable('disable');
         }
     },
     'click #change_background': function () {
