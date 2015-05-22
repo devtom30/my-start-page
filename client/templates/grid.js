@@ -2,8 +2,10 @@ CURRENT_CONFIGURED_WIDGET = 'current_configured_widget';
 Session.setDefault(CURRENT_CONFIGURED_WIDGET, false);
 
 Template.grid.rendered = function() {
+    Tracker.autorun(function () {
+        Widgets.modificationStartStop(Session.get(IN_MODIFICATION_STATE));
+    });
 };
-
 Template.grid.helpers({
 	widgets:function(){
 		return Widgets_Collection.find({});

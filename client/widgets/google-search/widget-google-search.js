@@ -25,7 +25,7 @@ Widgets.register('google-search', {
 Template.widgetGoogleSearch.rendered = function(){
     //Make sure the search library is loaded...
     //The triggers the go right after loading so we don't need to do anything fancy
-    if(typeof google != undefined){
+    if(typeof google != 'undefined' && typeof google.search != 'undefined' && typeof google.search.cse != 'undefined' && typeof google.search.cse.element != 'undefined'){
         google.search.cse.element.go(document);
     }
 };
