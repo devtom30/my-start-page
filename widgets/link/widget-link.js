@@ -44,7 +44,8 @@ Widgets.register('link', {
             autoform: {
                 afFieldInput: {
                     type: 'fileUpload',
-                    collection: 'Images'
+                    collection: 'Images',
+                    accept: 'image/*'
                 }
             }
         }
@@ -53,25 +54,26 @@ Widgets.register('link', {
         href: 'http://',
         bgColor: 'rgba(248,248,248,1)',
         icon: 'fa-bookmark',
-        iconColor:'',
+        iconColor:'rgb(51, 122, 183,1)',
         background: ''
     },
     widgetTemplate: 'widgetLink'
 });
-
-Template.widgetLink.helpers({
-    'attributes': function () {
-        var attributes = {};
-        attributes.style = '';
-        if (this.data.bgColor !== '') {
-            attributes.style += 'background-color:' + this.data.bgColor + ';';
+if(Meteor.isClient){
+    Template.widgetLink.helpers({
+        'attributes': function () {
+            var attributes = {};
+            attributes.style = '';
+            if (this.data.bgColor !== '') {
+                attributes.style += 'background-color:' + this.data.bgColor + ';';
+            }
+            if (this.data.background !== '') {
+                attributes.style += 'background-image:url("' + Images.findOne(this.data.background).url() + '");';
+            }
+            if (this.data.iconColor !== '') {
+                attributes.style += 'color:' + this.data.iconColor + ';';
+            }
+            return attributes;
         }
-        if (this.data.background !== '') {
-            attributes.style += 'background-image:url("' + Images.findOne(this.data.background).url() + '");';
-        }
-        if (this.data.iconColor !== '') {
-            attributes.style += 'color:' + this.data.iconColor + ';';
-        }
-        return attributes;
-    }
-});
+    });
+}

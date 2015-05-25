@@ -4,10 +4,12 @@ Template.backgroundConfig.helpers({
 			background : {
 				type : String,
 				label : "Background Image",
+                optional:true,
 				autoform : {
 					afFieldInput : {
 						type : "fileUpload",
-						collection : 'Images'
+						collection : 'Images',
+                        accept: 'image/*'
 					}
 				}
 			}

@@ -1,5 +1,4 @@
 if (Meteor.isClient) {
-
     Tracker.autorun(function(){
         dashboards = Meteor.subscribe('dashboards', function () {
             if (Meteor.userId() && !Session.get(CURRENT_DASHBOARD)) {
@@ -9,11 +8,11 @@ if (Meteor.isClient) {
             }
         });
         current_widgets =  Meteor.subscribe('current_widgets', Session.get(CURRENT_DASHBOARD));
-    })
-
-    images = Meteor.subscribe('user-images', function () {
+        images = Meteor.subscribe('user-images', Session.get(CURRENT_DASHBOARD));
 
     });
+
+
     Template.body.rendered = function () {
         Tracker.autorun(function () {
             var dashboard = Dashboards.find({_id: Session.get(CURRENT_DASHBOARD)}).fetch();
