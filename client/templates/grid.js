@@ -3,6 +3,8 @@ Session.setDefault(CURRENT_CONFIGURED_WIDGET, false);
 
 Template.grid.rendered = function() {
     Tracker.autorun(function () {
+        //Using count triggers re-computation when adding a new widget.
+        Widgets_Collection.find({}).count();
         Widgets.modificationStartStop(Session.get(IN_MODIFICATION_STATE));
     });
 };

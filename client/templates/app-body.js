@@ -16,7 +16,9 @@ Template.appBody.events({
         $('#backgroundConfigModal').modal('show');
     },
     'click #add_widget': function () {
-        $('#widgetAddModal').modal('show');
+        var $modal = $('#widgetAddModal');
+        $modal.find('[data-toggle="tooltip"]').tooltip();
+        $modal.modal('show');
     }
 });
 

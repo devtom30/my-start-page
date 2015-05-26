@@ -39,7 +39,9 @@
       <a data-toggle="collapse" data-parent="#accordion" href="#details_{{widget.name}}" aria-expanded="false" aria-controls="details_{{widget.name}}">
         {{widget.info.name}}
       </a>
+	    <div class="pull-right" {{disabledAtts widget}}>
       <button type="button" class="btn btn-primary pull-right btn-xs addBtn" {{disabled widget}}>Add</button>
+        </div>
     </h4>
   </div>
   <div id="details_{{widget.name}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">

@@ -12,6 +12,7 @@ Widgets.register('link', {
         bgColor: {
             type: String,
             label: 'Background Color',
+            optional: true,
             autoform: {
                 type: 'bootstrap-colorpicker',
                 colorPickerOptions: {
@@ -30,6 +31,7 @@ Widgets.register('link', {
         iconColor: {
             type: String,
             label: 'Icon Color',
+            optional: true,
             autoform: {
                 type: 'bootstrap-colorpicker',
                 colorPickerOptions: {
@@ -67,7 +69,7 @@ if(Meteor.isClient){
             if (this.data.bgColor !== '') {
                 attributes.style += 'background-color:' + this.data.bgColor + ';';
             }
-            if (this.data.background !== '') {
+            if (this.data.background !== '' && Images.findOne(this.data.background)) {
                 attributes.style += 'background-image:url("' + Images.findOne(this.data.background).url() + '");';
             }
             if (this.data.iconColor !== '') {

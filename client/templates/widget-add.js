@@ -5,10 +5,25 @@ Template.widgetAdd.helpers({
 });
 
 Template.widgetItem.helpers({
-    disabled:function(widget){
-        if(widget.limit>0){
-            return  Widgets_Collection.find({dashboard_id:Session.get(CURRENT_DASHBOARD),type:widget.name}).count()>=widget.limit?'disabled':'';
-        }else{
+    disabled:function(widget) {
+        if (widget.limit > 0) {
+            return Widgets_Collection.find({
+                dashboard_id: Session.get(CURRENT_DASHBOARD),
+                type: widget.name
+            }).count() >= widget.limit ? {
+                disabled: true
+            } : '';
+        } else {
+            return '';
+        }
+    },
+    disabledAtts:function(widget){
+        if (widget.limit > 0) {
+            return Widgets_Collection.find({
+                dashboard_id: Session.get(CURRENT_DASHBOARD),
+                type: widget.name
+            }).count() >= widget.limit ?  {'data-toggle':'tooltip','data-placement':'top',title:'The maximum amount of this kind of widget is reached, you cannot add more.'} : '';
+        } else {
             return '';
         }
     }
@@ -55,5 +70,6 @@ Template.widgetAdd.events({
         if(!noValidPosition){
             Widgets_Collection.insert(newWidget);
         }
+        $('#widgetAddModal').modal({show: false});
     }
 });
