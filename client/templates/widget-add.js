@@ -70,6 +70,6 @@ Template.widgetAdd.events({
         if(!noValidPosition){
             Widgets_Collection.insert(newWidget);
         }
-        $('#widgetAddModal').modal({show: false});
+        $('#widgetAddModal').modal('hide');
     }
 });

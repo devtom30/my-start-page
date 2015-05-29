@@ -1,15 +1,17 @@
 if (Meteor.isClient) {
     Tracker.autorun(function(){
-        dashboards = Meteor.subscribe('dashboards', function () {
-            if (Meteor.userId() && !Session.get(CURRENT_DASHBOARD)) {
-                Session.set(CURRENT_DASHBOARD, Dashboards.findOne({
-                    ownerid: Meteor.userId()
-                })._id);
-            }
-        });
+        dashboards = Meteor.subscribe('dashboards');
+        if (Meteor.userId() && !Session.get(CURRENT_DASHBOARD) && Dashboards.find({}).count()>0) {
+            Session.set(CURRENT_DASHBOARD, Dashboards.findOne({
+                ownerid: Meteor.userId()
+            })._id);
+        }
         current_widgets =  Meteor.subscribe('current_widgets', Session.get(CURRENT_DASHBOARD));
         images = Meteor.subscribe('user-images', Session.get(CURRENT_DASHBOARD));
-
+        if(!Meteor.userId()){
+            current_widgets.stop();
+            images.stop();
+        }
     });
 
 

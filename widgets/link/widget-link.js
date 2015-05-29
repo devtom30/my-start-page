@@ -54,7 +54,7 @@ Widgets.register('link', {
     },
     data: {
         href: 'http://',
-        bgColor: 'rgba(248,248,248,1)',
+        bgColor: 'rgba(255,255,255,0.9)',
         icon: 'fa-bookmark',
         iconColor:'rgb(51, 122, 183,1)',
         background: ''
