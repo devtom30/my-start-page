@@ -17,3 +17,8 @@ cfs:gridfs
 yogiben:autoform-file
 fortawesome:fontawesome
 matb33:collection-hooks
+meteorhacks:kadira
+meteorhacks:kadira-profiler
+meteorhacks:fast-render
+ground:db
+appcache

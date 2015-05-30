@@ -1,5 +1,9 @@
 if (Meteor.isClient) {
     Tracker.autorun(function(){
+        console.log({
+            ownerid: Meteor.userId(),
+            session_dashboard:Session.get(CURRENT_DASHBOARD)
+        });
         dashboards = Meteor.subscribe('dashboards');
         if (Meteor.userId() && !Session.get(CURRENT_DASHBOARD) && Dashboards.find({}).count()>0) {
             Session.set(CURRENT_DASHBOARD, Dashboards.findOne({
@@ -27,3 +31,9 @@ if (Meteor.isClient) {
     };
 }
 
+if(Meteor.isServer){
+    FastRender.route('/', function() {
+        //you can also use "urlPath" parameter to customize a bit as well
+        this.subscribe('dashboards');
+    });
+}

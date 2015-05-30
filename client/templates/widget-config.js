@@ -14,6 +14,9 @@ Template.widgetConfig.helpers({
 });
 Template.widgetConfig.rendered = function () {
     $('#widgetConfigModal').modal({show: false});
+    $('#widgetConfigModal').on('hidden.bs.modal',function(){
+        Session.set(CURRENT_CONFIGURED_WIDGET,false);
+    });
 };
 Template.widgetConfig.events({
     'click #delete-button': function () {

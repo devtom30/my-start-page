@@ -1,3 +1,6 @@
+@max_rows:30;
+@margins:5px;
+@size:100px;
 .widget.link{
 	a,&{
 		display:block;
@@ -5,16 +8,13 @@
 		height:100%;
 		text-align:center;
 		.link_icon{
-			font-size:100px;
-			line-height:140px;
+			font-size:70px;
+			line-height:@size;
 		}
 		background-position:center;
 		background-size: cover;
 	}
 }
-@max_rows:30;
-@margins:5px;
-@size:140px;
 .generate-line-height(@max_rows);
 .generate-line-height(@n, @i: 1) when (@i =< @n) {
 	.height-@{i} .widget.link a .link_icon{
