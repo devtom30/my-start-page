@@ -22,14 +22,14 @@ Widgets.register('post-it', {
             autoform: {
                 type: 'bootstrap-colorpicker',
                 colorPickerOptions: {
-                    format: 'rgba'
+                    format: 'rgb'
                 }
             }
         }
     },
     data: {
         bgColor: 'rgba(255,255,255,0.9)',
-        fontColor: 'rgba(0,0,0,1)'
+        fontColor: 'rgb(0,0,0,1)'
     },
     widgetTemplate: 'widgetPostIt',
     display_text:''

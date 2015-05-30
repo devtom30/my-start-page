@@ -35,7 +35,7 @@ Widgets.register('link', {
             autoform: {
                 type: 'bootstrap-colorpicker',
                 colorPickerOptions: {
-                    format: 'rgba'
+                    format: 'rgb'
                 }
             }
         },
@@ -56,7 +56,7 @@ Widgets.register('link', {
         href: 'http://',
         bgColor: 'rgba(255,255,255,0.9)',
         icon: 'fa-bookmark',
-        iconColor:'rgb(51, 122, 183,1)',
+        iconColor:'rgb(51, 122, 183)',
         background: ''
     },
     widgetTemplate: 'widgetLink'
