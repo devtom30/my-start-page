@@ -25,3 +25,9 @@ Template.appBody.events({
 Template.registerHelper('in_modification_state', function () {
     return Session.get(IN_MODIFICATION_STATE);
 });
+Template.registerHelper('momentFromNow', function(time){
+    return moment(time).fromNow();
+});
+Template.registerHelper('formattedDate', function(time){
+    return moment(time).format('LLLL');
+});
