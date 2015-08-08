@@ -1,0 +1,12 @@
+.colorpicker-saturation {
+    background-image: url('/packages/salketer_autoform-bs-colorpicker/lib/bootstrap-colorpicker/dist/img/bootstrap-colorpicker/saturation.png');
+}
+.colorpicker-hue { 
+	background-image: url('/packages/salketer_autoform-bs-colorpicker/lib/bootstrap-colorpicker/dist/img/bootstrap-colorpicker/hue.png') 
+}
+.colorpicker-alpha {
+    background-image: url('/packages/salketer_autoform-bs-colorpicker/lib/bootstrap-colorpicker/dist/img/bootstrap-colorpicker/alpha.png');
+}
+.colorpicker-color {
+    background-image: url('/packages/salketer_autoform-bs-colorpicker/lib/bootstrap-colorpicker/dist/img/bootstrap-colorpicker/alpha.png');
+}

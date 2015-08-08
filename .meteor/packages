@@ -1,0 +1,25 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-platform
+accounts-password
+nemo64:bootstrap
+less
+ian:accounts-ui-bootstrap-3
+aldeed:autoform
+salketer:autoform-bs-colorpicker
+salketer:autoform-bs-iconpicker
+cfs:standard-packages
+cfs:gridfs
+yogiben:autoform-file
+fortawesome:fontawesome
+matb33:collection-hooks
+meteorhacks:kadira
+meteorhacks:kadira-profiler
+meteorhacks:fast-render
+ground:db
+appcache
+momentjs:moment

@@ -1,0 +1,28 @@
+<template name="widgetConfig">
+    <div class="modal fade" id="widgetConfigModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Widget configuration</h4>
+                </div>
+                <div class="modal-body">
+					{{#if currentSchema}}
+						{{> quickForm schema=currentSchema id="widgetConfiguration" doc=currentDocument buttonContent=false}}
+                        <button type="submit" class="btn btn-primary" form="widgetConfiguration">
+                            Submit
+                        </button>
+						{{#with currentDocument}}
+                            <button type="button" class="btn btn-danger pull-right" id="delete-button">
+                                <i class="fa fa-trash"></i>
+                            </button>
+						{{/with}}
+
+					{{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

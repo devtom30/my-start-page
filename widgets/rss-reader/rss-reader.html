@@ -1,0 +1,15 @@
+<template name="widgetRssReader">
+    <div {{attributes}}>
+	    <h2 {{titleAttributes}}>{{this.feedInfo.title}}</h2>
+	    {{#each feedEntries}}
+	        {{>widgetRssReaderEntry}}
+	    {{/each}}
+    </div>
+</template>
+
+<template name="widgetRssReaderEntry">
+	<li>
+        <a href="{{link}}"><h4 {{attrs}}>{{title}}</h4></a>
+		<p title="{{formattedDate publishedDate}}">{{momentFromNow publishedDate}}</p>
+	</li>
+</template>
