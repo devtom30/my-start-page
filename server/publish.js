@@ -1,7 +1,10 @@
-Meteor.publish('dashboards', function () {
-    return Dashboards.find({$or: [{ownerid: this.userId}, {ownerid: null}]});
+Meteor.publish('user-dashboards', function () {
+    return Dashboards.find({ownerid: this.userId});
 });
 
+Meteor.publish('dashboard', function (id) {
+    return Dashboards.find({_id: id,public:true});
+});
 
 Meteor.publish('current_widgets', function (dashboard_id) {
     return Widgets_Collection.find({dashboard_id: dashboard_id});

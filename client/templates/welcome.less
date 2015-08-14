@@ -1,0 +1,24 @@
+@import "../lib/bootstrap/custom.bootstrap.import.less";
+@import "/client/styles/less-elements.import.less";
+.welcome {
+	.jumbotron{
+		background:@brand-primary url('images/grid_texture.png') 50% 50%  no-repeat;
+		background-size:cover;
+		text-shadow: black 0.1em 0.1em 0.2em;
+		color:white;
+		.lead{
+			margin-top:40px;
+		}
+	}
+	.section{
+		padding:20px 0px;
+		&.content-a{
+
+		}
+		&.content-b{
+			background-color:#F8F8F8;
+			border-top:1px solid #E7E7E7;
+			border-bottom:1px solid #E7E7E7;
+		}
+	}
+}

@@ -13,10 +13,34 @@ Widgets.register('rss-reader', {
             type: String,
             label: 'RSS feed URL',
             max: 400
+        },
+        bgColor: {
+            type: String,
+            label: 'Background Color',
+            optional: true,
+            autoform: {
+                type: 'bootstrap-colorpicker',
+                colorPickerOptions: {
+                    format: 'rgba'
+                }
+            }
+        },
+        fontColor: {
+            type: String,
+            label: 'Text Color',
+            optional: true,
+            autoform: {
+                type: 'bootstrap-colorpicker',
+                colorPickerOptions: {
+                    format: 'rgb'
+                }
+            }
         }
     },
     data: {
-        feed_url: ''
+        feed_url: '',
+        bgColor: 'rgba(255,255,255,0.9)',
+        fontColor: 'rgb(0,0,0,1)'
     },
     widgetTemplate: 'widgetRssReader',
     feedEntries:[],
@@ -49,7 +73,7 @@ var grabRssFeed = function (widget) {
                             }
                             widget.modify({feedEntries:new_entries.concat(widget.feedEntries).slice(0,10)});
 
-                            if(!widget.feedInfo){
+                            if(!widget.feedInfo.title){
                                 widget.modify({feedInfo:{
                                     title:result.feed.title,
                                     link:result.feed.link,
@@ -69,7 +93,15 @@ if (Meteor.isClient) {
     };
     Template.widgetRssReader.helpers({
         attributes:function() {
-            return '';
+            var attributes = {};
+            attributes.style = '';
+            if (this.data.bgColor !== '') {
+                attributes.style += 'background-color:' + this.data.bgColor + ';';
+            }
+            if (this.data.fontColor !== '') {
+                attributes.style += 'color:' + this.data.fontColor + ';';
+            }
+            return attributes;
         },titleAttributes:function(){
             return {title:this.feedInfo.description};
         },feedEntries:function(){

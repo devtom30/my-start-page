@@ -1,31 +1,47 @@
 <template name="appBody">
     <div class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Gridfully</a>
+            <a class="navbar-brand brand-font" href="#">Gridfully</a>
         </div>
         <div class="navbar-collapse collapse">
-	        {{#if currentUser}}
-            <ul class="nav navbar-nav">
-                <li class="{{#if in_modification_state}}active{{/if}}">
-                    <a href="#" id="modification_toggle"
-                       title="Configure"><i class="fa fa-gears"></i></a>
-                </li>
-				{{#if in_modification_state}}
-                    <li><a href="#" id="add_widget" title="Add widget"><i class="fa fa-plus"></i></a></li>
-                    <li><a href="#" id="change_background" title="Change background"><i class="fa fa-photo"></i></a>
+            {{#if currentUser}}
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{dashboard.name}} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            {{#each user_dashboards}}
+                                <li><a href="/g/{{_id}}">{{name}}</a></li>
+                            {{/each}}
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Create New Dashboard</a></li>
+
+                        </ul>
                     </li>
-				{{/if}}
-            </ul>
-	        {{/if}}
+                    <li class="{{#if in_modification_state}}active{{/if}}">
+                        <a href="#" id="modification_toggle"
+                           title="Configure"><i class="fa fa-gears"></i></a>
+                    </li>
+                    {{#if in_modification_state}}
+                        <li><a href="#" id="add_widget" title="Add widget"><i class="fa fa-plus"></i></a></li>
+                        <li><a href="#" id="change_background" title="Change background"><i class="fa fa-photo"></i></a>
+                        </li>
+                    {{/if}}
+                </ul>
+            {{/if}}
             <ul class="nav navbar-nav navbar-right">
-				{{> loginButtons}}
+                {{> loginButtons}}
             </ul>
         </div>
     </div>
-	{{> grid}}
+
+    {{#if dashboard}}
+        {{> grid}}
+    {{else}}
+        {{> welcome}}
+    {{/if}}
 
 
-	{{> widgetConfig}}
-	{{> widgetAdd}}
-	{{> backgroundConfig}}
+    {{> widgetConfig}}
+    {{> widgetAdd}}
+    {{> backgroundConfig}}
 </template>

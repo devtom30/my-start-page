@@ -6,6 +6,9 @@ Session.setDefault(CURRENT_DASHBOARD, false);
 Template.appBody.helpers({
     dashboard: function () {
         return Dashboards.findOne(Session.get(CURRENT_DASHBOARD));
+    },
+    user_dashboards:function(){
+        return Dashboards.find({ownerid: Meteor.userId()});
     }
 });
 Template.appBody.events({
