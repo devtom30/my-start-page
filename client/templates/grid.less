@@ -1,0 +1,56 @@
+@import "../lib/bootstrap/custom.bootstrap.import.less";
+@import "/client/styles/less-elements.import.less";
+
+.template.grid {
+	#dashboard {
+		list-style: none;
+		background: white;
+		position: relative;
+		& > li {
+			position: absolute;
+			overflow: hidden;
+			.drop-shadow(0px, 3px,5px,0.5,-2px);
+			.widget {
+				height:100%;
+				width:100%;
+				border: 1px solid #e7e7e7;
+				& > div{
+					background-color: rgba(255,255,255,0.9);
+					height:100%;
+					width:100%;
+				}
+			}
+			.dragHandle {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				cursor: move;
+				z-index: 9;
+			}
+			.configure-btn {
+				position: absolute;
+				z-index: 10;
+				background-color: @btn-primary-bg;
+				display: block;
+				width: 100px;
+				height: 100px;
+				top: -60px;
+				left: -60px;
+				-webkit-transform: rotate(45deg);
+				-moz-transform: rotate(45deg);
+				-o-transform: rotate(45deg);
+				transform: rotate(45deg);
+				vertical-align: middle;
+				text-align: right;
+				line-height: 100px;
+				padding-right: 6px;
+				font-size: 20px;
+				color: @btn-primary-color;
+				border: 1px solid @btn-primary-border;
+				.drop-shadow(2px, 2px);
+			}
+		}
+	}
+}

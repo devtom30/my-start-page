@@ -1,0 +1,25 @@
+.widget.google-search {
+	& > div {
+		width: 100%;
+		height: 100%;
+		padding: 10px;
+		text-align: center;
+		& > div {
+			margin-top: 10px;
+			box-sizing: content-box;
+			-moz-box-sizing: content-box;
+			input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:focus {
+				-webkit-box-shadow: none;
+				-moz-box-shadow: none;
+				box-shadow: none;
+			}
+			.cse .gsc-search-button input.gsc-search-button-v2, input.gsc-search-button-v2 {
+				width: auto;
+				height: auto;
+			}
+			input.gsc-input, .gsc-input-box, .gsc-input-box-hover, .gsc-input-box-focus {
+				line-height: normal;
+			}
+		}
+	}
+}

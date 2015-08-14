@@ -1,0 +1,3 @@
+[submodule "packages/autoform-bs-colorpicker/lib/bootstrap-colorpicker"]
+	path = packages/autoform-bs-colorpicker/lib/bootstrap-colorpicker
+	url = https://github.com/mjolnic/bootstrap-colorpicker.git
