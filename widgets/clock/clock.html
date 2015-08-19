@@ -1,0 +1,10 @@
+<template name="widgetClock">
+    <svg class="clock" viewBox="0 0 100 100" style="background:{{data.bgColor}}">
+        <text x="50" y="75" {{style}} text-anchor="middle">{{data.titre}}</text>
+        <g class="hands">
+            <rect class="hour" x="47.5" y="27.5" width="5" height="25" rx="2.5" ry="2.55" {{style}}/>
+            <rect class="min" x="48.5" y="11.5" width="3" height="40" rx="2" ry="2" {{style}}/>
+            <rect class="sec" x="49.5" y="15.5" width="1" height="35" rx="2" ry="2" {{style}}/>
+        </g>
+    </svg>
+</template>

@@ -6,9 +6,13 @@
 
 meteor-platform
 accounts-password
+accounts-facebook
+accounts-twitter
+accounts-google
+ian:accounts-ui-bootstrap-3
+splendido:accounts-meld
 nemo64:bootstrap
 less
-ian:accounts-ui-bootstrap-3
 aldeed:autoform
 salketer:autoform-bs-colorpicker
 salketer:autoform-bs-iconpicker

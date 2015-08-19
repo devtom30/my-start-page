@@ -10,7 +10,7 @@ Template.grid.rendered = function() {
 };
 Template.grid.helpers({
 	widgets:function(){
-		return Widgets_Collection.find({});
+		return Widgets_Collection.find({dashboard_id:Session.get(CURRENT_DASHBOARD)});
 	}
 });
 

@@ -1,35 +1,14 @@
 if (Meteor.isClient) {
     Tracker.autorun(function () {
-        dashboards = Meteor.subscribe('user-dashboards');
-        if (Meteor.userId() && !Session.get(CURRENT_DASHBOARD) && Dashboards.find({}).count() > 0) {
-            var home_dashboard = Dashboards.findOne({
-                ownerid: Meteor.userId(), home: true
-            });
-            if (!home_dashboard) {
-                home_dashboard = Dashboards.findOne({
-                    ownerid: Meteor.userId()
-                });
-                Dashboards.update(home_dashboard._id, {
-                    $set: {home: 1}
-                });
-            }
-            Session.set(CURRENT_DASHBOARD, home_dashboard._id);
+
+        if(Meteor.userId()){
+            dashboards = Meteor.subscribe('user-dashboards');
         }
         current_widgets = Meteor.subscribe('current_widgets', Session.get(CURRENT_DASHBOARD));
         images = Meteor.subscribe('user-images', Session.get(CURRENT_DASHBOARD));
         if (!Meteor.userId()) {
             current_widgets.stop();
             images.stop();
-        }
-    });
-
-    Tracker.autorun(function(){
-        if(Session.get(CURRENT_DASHBOARD)){
-            FlowRouter.go('/g/'+Session.get(CURRENT_DASHBOARD));
-            dashboard = Dashboards.findOne(Session.get(CURRENT_DASHBOARD));
-            if(dashboard && dashboard.ownerid != Meteor.userId()){
-                Session.set(IN_MODIFICATION_STATE,false);
-            }
         }
     });
 
@@ -47,14 +26,20 @@ if (Meteor.isClient) {
             }
         });
     };
-}
-
-if (Meteor.isServer) {
-    FastRender.route('/', function () {
-        if(Meteor.userId()){
-            this.subscribe('user-dashboards',Dashboards.findOne({
+    Accounts.onLogin(function(){
+        if(!Session.get(CURRENT_DASHBOARD)){
+            var home_dashboard = Dashboards.findOne({
                 ownerid: Meteor.userId(), home: true
-            })._id);
+            });
+            if (!home_dashboard) {
+                home_dashboard = Dashboards.findOne({
+                    ownerid: Meteor.userId()
+                });
+                Dashboards.update(home_dashboard._id, {
+                    $set: {home: 1}
+                });
+            }
+            FlowRouter.go('/g/'+home_dashboard._id);
         }
     });
 }
