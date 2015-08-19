@@ -1,0 +1,41 @@
+<Template name="shareModal">
+    <div class="modal fade" id="shareToggleModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Grid Sharing</h4>
+                </div>
+                <div class="modal-body">
+                    {{#if currentlyShared}}
+                        <p>
+                            Your grid is currently being shared and is accessible to anyone who knows its link.
+                        </p>
+                        <div class="well">http://gridfully.net/g/{{dashboard_id}}</div>
+                        <p>
+                            ATTENTION! This means that information you used while configuring your boxes may be visible to anyone.
+                        </p>
+                    {{else}}
+                        <p>
+                            Your grid is currently private and only you can see it.
+                        </p>
+
+                        <p>
+                            By making it public, everyone with its link will be able to access it. This means that anyone can possibly see all the information you have used to configure your boxes.
+                        </p>
+                    {{/if}}
+                    <div class="text-center">
+                        <button type="button" {{checkbox_attrs}}>
+                            {{#if currentlyShared}}
+                                Make this grid private.
+                            {{else}}
+                                Allow anyone with the link to see my grid.
+                            {{/if}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</Template>

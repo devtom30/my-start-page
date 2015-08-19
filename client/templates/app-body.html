@@ -7,7 +7,8 @@
             {{#if currentUser}}
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{dashboard.name}} <span class="caret"></span></a>
+                        <p class="dropdown-toggle navbar-text" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">{{dashboard.name}} <span class="caret"></span></p>
                         <ul class="dropdown-menu">
                             {{#each user_dashboards}}
                                 <li><a href="/g/{{_id}}">{{name}}</a></li>
@@ -22,9 +23,12 @@
                            title="Configure"><i class="fa fa-gears"></i></a>
                     </li>
                     {{#if in_modification_state}}
-                        <li><a href="#" id="add_widget" title="Add widget"><i class="fa fa-plus"></i></a></li>
-                        <li><a href="#" id="change_background" title="Change background"><i class="fa fa-photo"></i></a>
-                        </li>
+                        <li><p class="navbar-text btn-link" role="button" id="add_widget" title="Add widget"><i
+                                class="fa fa-plus"></i></p></li>
+                        <li><p class="navbar-text btn-link" role="button" id="change_background" title="Change background"><i
+                                class="fa fa-photo"></i></p></li>
+                        <li><p class="navbar-text btn-link {{#if dashboard_public}}public-text{{else}}private-text{{/if}}" role="button" id="toggle_share" title="Share"><i
+                                class="fa fa-share-alt"></i></p></li>
                     {{/if}}
                 </ul>
             {{/if}}
@@ -44,4 +48,5 @@
     {{> widgetConfig}}
     {{> widgetAdd}}
     {{> backgroundConfig}}
+    {{> shareModal}}
 </template>

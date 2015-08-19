@@ -23,6 +23,15 @@ if (Meteor.isClient) {
         }
     });
 
+    Tracker.autorun(function(){
+        if(Session.get(CURRENT_DASHBOARD)){
+            FlowRouter.go('/g/'+Session.get(CURRENT_DASHBOARD));
+            dashboard = Dashboards.findOne(Session.get(CURRENT_DASHBOARD));
+            if(dashboard && dashboard.ownerid != Meteor.userId()){
+                Session.set(IN_MODIFICATION_STATE,false);
+            }
+        }
+    });
 
     Template.body.rendered = function () {
         Tracker.autorun(function () {
@@ -42,7 +51,10 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
     FastRender.route('/', function () {
-        //you can also use "urlPath" parameter to customize a bit as well
-        this.subscribe('dashboards');
+        if(Meteor.userId()){
+            this.subscribe('user-dashboards',Dashboards.findOne({
+                ownerid: Meteor.userId(), home: true
+            })._id);
+        }
     });
 }

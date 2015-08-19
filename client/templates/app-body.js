@@ -9,6 +9,11 @@ Template.appBody.helpers({
     },
     user_dashboards:function(){
         return Dashboards.find({ownerid: Meteor.userId()});
+    },
+    dashboard_public:function(){
+        if(Dashboards.find(Session.get(CURRENT_DASHBOARD)).count()>0){
+            return Dashboards.find(Session.get(CURRENT_DASHBOARD)).fetch()[0].public==1;
+        }
     }
 });
 Template.appBody.events({
@@ -21,6 +26,10 @@ Template.appBody.events({
     'click #add_widget': function () {
         var $modal = $('#widgetAddModal');
         $modal.find('[data-toggle="tooltip"]').tooltip();
+        $modal.modal('show');
+    },
+    'click #toggle_share':function(){
+        var $modal = $('#shareToggleModal');
         $modal.modal('show');
     }
 });

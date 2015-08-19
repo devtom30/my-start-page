@@ -6,4 +6,19 @@ body{
 }
 body,html{
 	height:100%;
-}w
+}
+
+@public-color:#25B859;
+.public-text{
+	color:@public-color !important;
+}
+.public-bg{
+	background-color:lighten(@public-color,20%);
+}
+@private-color:#C9261F;
+.private-text{
+	color:@private-color !important;
+}
+.private-bg{
+	background-color:lighten(@private-color,20%);
+}
