@@ -13,12 +13,10 @@ ian:accounts-ui-bootstrap-3
 splendido:accounts-meld
 nemo64:bootstrap
 less
-aldeed:autoform
 salketer:autoform-bs-colorpicker
 salketer:autoform-bs-iconpicker
 cfs:standard-packages
 cfs:gridfs
-yogiben:autoform-file
 fortawesome:fontawesome
 matb33:collection-hooks
 meteorhacks:kadira
@@ -28,3 +26,5 @@ ground:db
 appcache
 momentjs:moment
 kadira:flow-router
+aldeed:autoform
+yogiben:autoform-file

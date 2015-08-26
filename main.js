@@ -1,6 +1,5 @@
 if (Meteor.isClient) {
     Tracker.autorun(function () {
-
         if(Meteor.userId()){
             dashboards = Meteor.subscribe('user-dashboards');
         }
@@ -9,6 +8,7 @@ if (Meteor.isClient) {
         if (!Meteor.userId()) {
             current_widgets.stop();
             images.stop();
+            dashboards.stop();
         }
     });
 

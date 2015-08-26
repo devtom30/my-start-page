@@ -14,7 +14,7 @@ Package.onUse(function(api) {
 	api.versionsFrom('1.1.0.2');
 	api.use('templating@1.0.0');
 	api.use('blaze@2.0.0');
-	api.use('aldeed:autoform@4.0.0 || 5.0.0');
+	api.use('aldeed:autoform');
 	api.addFiles([
 	              "lib/bootstrap-iconpicker/js/iconset/iconset-fontawesome-4.2.0.min.js",
 	              "lib/bootstrap-iconpicker/js/bootstrap-iconpicker.min.js",
