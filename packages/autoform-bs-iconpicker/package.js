@@ -20,6 +20,6 @@ Package.onUse(function(api) {
 	              "lib/bootstrap-iconpicker/js/bootstrap-iconpicker.min.js",
 	              "lib/bootstrap-iconpicker/css/bootstrap-iconpicker.min.css",
 	              'autoform-bs-iconpicker.html',
-	              'autoform-bs-iconpicker.js',
+	              'autoform-bs-iconpicker.js'
 	            ], 'client');
 });

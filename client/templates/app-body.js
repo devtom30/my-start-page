@@ -10,6 +10,10 @@ Template.appBody.helpers({
         }
         return dashboard.name;
     },
+    hasGrids:function(){
+        var dashboard = Dashboards.findOne();
+        return dashboard?true:false;
+    },
     user_dashboards: function () {
         return Dashboards.find({ownerid: Meteor.userId()});
     },

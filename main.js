@@ -1,6 +1,6 @@
 if (Meteor.isClient) {
     Tracker.autorun(function () {
-        if(Meteor.userId()){
+        if (Meteor.userId()) {
             dashboards = Meteor.subscribe('user-dashboards');
         }
         current_widgets = Meteor.subscribe('current_widgets', Session.get(CURRENT_DASHBOARD));
@@ -8,7 +8,9 @@ if (Meteor.isClient) {
         if (!Meteor.userId()) {
             current_widgets.stop();
             images.stop();
-            dashboards.stop();
+            if (typeof dashboards !== 'undefined') {
+                dashboards.stop();
+            }
         }
     });
 
@@ -26,8 +28,8 @@ if (Meteor.isClient) {
             }
         });
     };
-    Accounts.onLogin(function(){
-        if(!Session.get(CURRENT_DASHBOARD)){
+    Accounts.onLogin(function () {
+        if (!Session.get(CURRENT_DASHBOARD)) {
             var home_dashboard = Dashboards.findOne({
                 ownerid: Meteor.userId(), home: true
             });
@@ -39,7 +41,7 @@ if (Meteor.isClient) {
                     $set: {home: 1}
                 });
             }
-            FlowRouter.go('/g/'+home_dashboard._id);
+            FlowRouter.go('/g/' + home_dashboard._id);
         }
     });
 }
