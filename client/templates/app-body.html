@@ -6,6 +6,7 @@
         <div class="navbar-collapse collapse">
 
                 <ul class="nav navbar-nav">
+                    {{#if hasGrids}}
                     <li {{gridlist_attr}}>
                         <p {{gridname_attr}}>{{gridname}} {{#if currentUser}}<span class="caret"></span>{{/if}}</p>
                         {{#if currentUser}}
@@ -19,6 +20,7 @@
                             </ul>
                         {{/if}}
                     </li>
+                    {{/if}}
                     {{#if currentUser}}
                         <li class="{{#if in_modification_state}}active{{/if}}">
                             <a href="#" id="modification_toggle"
